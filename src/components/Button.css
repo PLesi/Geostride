@@ -1,0 +1,32 @@
+/* src/components/Button.css */
+@import '../App.css';
+
+.custom-button {
+  padding: 10px 20px;
+  margin: 0 4px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #f0f0f0;
+}
+
+.custom-button:hover {
+  background-color: #e0e0e0;
+}
+
+.button-primary {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: none
+}
+
+.button-primary:hover {
+  background-color: #ebaa3a; 
+}
+
+.button-secondary {
+  background-color: var(--neutral-color);
+  color: var(--text-color);
+  border-color: var(--primary-color);
+}

@@ -1,31 +1,43 @@
+/* Tvoje existujúce CSS premenné zostávajú rovnaké */
+:root{
+  --primary-color: #386641;
+  --secondary-color: #F2E8CF;
+  --background-color: #F9B43E; /* Túto premennú zatiaľ nepoužívame priamo v App-hero, ale je dobré ju mať */
+  --accent-color: #E57C23;
+  --accent-color-2: #A2D2FF;
+  --neutral-color: #FCFBF8;
+  --text-color: #333333;
+
+  --font-family: 'Arial', sans-serif;
+}
+
+body { /* Základné nastavenie pre celú stránku */
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--secondary-color); /* Jemné pozadie pre celú stránku */
+  color: var(--text-color);
+}
+
 .App {
   text-align: center;
 }
 
+.Navbar {
+  margin-right: 0;
+  margin-left: auto; /* Tlačidlo sa posunie na pravú stranu */
+}
+
 .App-logo {
-  height: 40vmin;
+  height: 6vmin;
+  width: 8vmin;
   pointer-events: none;
+  margin-left: 16px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +47,136 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-header {
+  background-color: var(--accent-color);
+  height: 8vh; /* Mierne zvýšenie pre lepší vizuálny priestor */
+  display: flex;
+  /* flex-direction: row;  je predvolené pre flex, netreba explicitne */
+  align-items: center;
+  justify-content: flex-start; /* Logo naľavo, titulok vedľa */
+  font-size: calc(10px + 2vmin);
+  color: var(--neutral-color); /* Použitie premennej */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 20px; /* Pridanie paddingu po stranách hlavičky */
+}
+
+.App-title {
+  font-size: calc(12px + 3vmin); /* Mierne upravená veľkosť */
+  color: var(--neutral-color); /* Použitie premennej pre text v hlavičke */
+  font-weight: 600;
+  /* text-align: center;  už nie je potrebné, ak je v flex kontajneri */
+  pointer-events: none;
+  margin: 0;
+  margin-left: 20px; /* Medzera medzi logom a titulkom */
+}
+
+/* Hero Sekcia (nahradzuje .App-intro a .Section-background ako obrázok) */
+.App-hero {
+  background-image: url('./background.jpeg'); /* UISTI SA, ŽE CESTA JE SPRÁVNA */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 75vh; /* Výška sekcie, môžeš upraviť */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px; /* Padding pre prípad, že obsah by bol príliš pri okrajoch */
+  color: var(--neutral-color); /* Farba textu na obrázku */
+}
+
+.Hero-content {
+  background-color: rgba(0, 0, 0, 0.55); /* Tmavšie polopriehľadné pozadie pre lepší kontrast textu */
+  padding: 30px 40px; /* Väčší padding pre obsah */
+  border-radius: 10px; /* Zaoblené rohy */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Jemný tieň pre zdôraznenie */
+}
+
+.Section-title { /* Upravený pre .Hero-content */
+  font-size: calc(18px + 3.5vmin); /* Dynamická veľkosť písma */
+  color: var(--neutral-color);
+  font-weight: 700; /* Výraznejšie písmo */
+  margin: 0 0 25px 0; /* Medzera pod nadpisom */
+  line-height: 1.3; /* Lepšie riadkovanie pre dlhšie nadpisy */
+  /* Odstránené: position, transform, left, top, background-color (rieši .Hero-content), border-radius */
+}
+
+
+.App-main {
+  padding: 40px 20px; /* Vertikálny a horizontálny padding pre hlavný obsah */
+}
+
+.App-content-area {
+  width: 90%; /* Responzívnejšia šírka */
+  max-width: 900px; /* Maximálna šírka pre čitateľnosť */
+  margin: 40px auto;
+  padding: 30px;
+  background-color: var(--neutral-color); /* Svetlejšie pozadie pre obsahovú časť */
+  border-radius: 12px; /* Väčšie zaoblenie */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Výraznejší tieň */
+  color: var(--text-color);
+}
+
+.App-content-area h2 {
+  color: var(--primary-color);
+  margin-top: 0; /* Odstránenie hornej medzery, ak je prvým prvkom */
+  margin-bottom: 20px; /* Medzera pod nadpisom sekcie */
+  font-size: calc(16px + 2.5vmin); /* Dynamická veľkosť */
+}
+
+.App-content-area p {
+  line-height: 1.7; /* Lepšia čitateľnosť dlhšieho textu */
+  margin-bottom: 20px; /* Medzera pod odsekom */
+}
+
+.App-footer {
+  background-color: var(--primary-color);
+  color: var(--neutral-color);
+  padding: 25px 20px; /* Väčší padding */
+  text-align: center;
+  margin-top: 50px;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Tieň hore pre oddelenie */
+}
+
+.App-link { /* Nezabudni, že túto triedu si mal, ale v JSX ju zatiaľ nepoužívaš */
+  color: var(--accent-color-2);
+}
+
+/* Štýly pre Tlačidlá (príklad, ak nemáš samostatný Button.css) */
+/* Ak máš Button.css, tieto štýly patria tam */
+.button { /* Základný štýl pre všetky tlačidlá */
+  padding: 12px 25px;
+  font-size: calc(10px + 1vmin);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5px; /* Malá medzera okolo tlačidiel */
+}
+
+.button:hover {
+  transform: translateY(-2px); /* Jemný efekt pri prejdení myšou */
+}
+
+.button-primary {
+  background-color: var(--accent-color);
+  color: var(--neutral-color);
+}
+
+.button-primary:hover {
+  background-color: #c96a1e; /* Tmavší odtieň --accent-color */
+}
+
+.button-secondary {
+  background-color: var(--accent-color-2);
+  color: var(--text-color);
+}
+
+.button-secondary:hover {
+  background-color: #8ec5f7; /* Svetlejší/iný odtieň --accent-color-2 */
 }
