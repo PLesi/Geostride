@@ -61,7 +61,7 @@ body { /* Základné nastavenie pre celú stránku */
 
 /* Hero Sekcia (nahradzuje .App-intro a .Section-background ako obrázok) */
 .App-hero {
-  background-image: url('./background.jpeg'); /* UISTI SA, ŽE CESTA JE SPRÁVNA */
+  background-image: url('../../background.jpeg'); /* UISTI SA, ŽE CESTA JE SPRÁVNA */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

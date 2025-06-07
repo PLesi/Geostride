@@ -1,50 +1,45 @@
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import SignUpPage from './pages/RegisterPage/RegisterPage';
+
 import logo from './logo.svg';
-// import background from './background.jpeg'; // Už nie je potrebné importovať, ak ho CSS načíta priamo
 import './App.css';
-import Button from './components/Button'; // Uisti sa, že cesta k Button komponentu je správna
+import Button from './components/Button';
 import React from 'react';
 
 function App() {
-  const handleClick = () => {
-    alert('Button clicked!');
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="Geostride Logo" />
-        <h1 className="App-title">GEOSTRIDE</h1>
-        <div className="Navbar">
-          <nav>
-        <Button text="Log in" onClick={handleClick} variant="primary" cla/>
-        <Button text="Sign up" onClick={handleClick} variant="secondary" />
-          </nav>
-        </div>
-      </header>
-
-      <main className="App-main">
-        {/* App-hero sekcia teraz využíva CSS pre obrázok na pozadí */}
-        <section className="App-hero">
-          {/* Tento img tag sa už nepoužíva pre pozadie: 
-          <img src={background} className="Section-background" alt="Scenic hiking or cycling trail" /> 
-          */}
-          <div className="Hero-content"> {/* Tento div obalí obsah na hero obrázku */}
-            <h2 className="Section-title">Map It. Snap It. Share It. Adventure Together.</h2>
-            <Button text="Discover Routes" onClick={handleClick} variant="primary" />
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="Geostride Logo" />
+          <h1 className="App-title">GEOSTRIDE</h1>
+          <div className="Navbar">
+            <nav>
+              <Link to="/login">
+                <Button text="Log in" variant="primary" />
+              </Link>
+              <Link to="/register">
+                <Button text="Sign up" variant="secondary" />
+              </Link>
+            </nav>
           </div>
-        </section>
+        </header>
 
-        <section className="App-content-area">
-          <h2>About Geostride</h2>
-          <p>Your new platform for discovering and sharing outdoor adventures. Explore detailed maps, track your progress, and connect with a community of fellow enthusiasts. Whether you're hiking, biking, or just exploring, Geostride is your companion for every journey.</p>
-          <Button text="Learn More" onClick={handleClick} variant="secondary" />
-        </section>
-      </main>
+        <main className="App-main">
+          <Routes>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<SignUpPage />} />
+          </Routes>
+        </main>
 
-      <footer className="App-footer">
-        <p>&copy; {new Date().getFullYear()} GEOSTRIDE. All rights reserved.</p>
-      </footer>
-    </div>
+        <footer className="App-footer">
+          <p>&copy; {new Date().getFullYear()} GEOSTRIDE. All rights reserved.</p>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
